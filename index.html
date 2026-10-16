@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>시험 전 오늘의 운세</title>
+<style>
+:root{--bg1:#f4efff;--bg2:#e3f0ff;--card:rgba(255,255,255,.78);--text:#241f3a;--sub:#7b7694;--line:rgba(120,100,200,.18);--chip:rgba(120,100,200,.1);--btn1:#7c5cff;--btn2:#4f8bff;--glow:.35;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg1:#14102b;--bg2:#0b1630;--card:rgba(32,27,62,.72);--text:#f3f0ff;--sub:#a29cc4;--line:rgba(180,170,255,.16);--chip:rgba(180,170,255,.12);--glow:.55}}
+:root[data-theme="dark"]{--bg1:#14102b;--bg2:#0b1630;--card:rgba(32,27,62,.72);--text:#f3f0ff;--sub:#a29cc4;--line:rgba(180,170,255,.16);--chip:rgba(180,170,255,.12);--glow:.55}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;min-height:100%}
+body{background:linear-gradient(160deg,var(--bg1),var(--bg2)) fixed;color:var(--text);font-family:"Pretendard",-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;display:flex;justify-content:center;padding:28px 16px;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(2px 2px at 12% 18%,#fff9,transparent),radial-gradient(1.5px 1.5px at 80% 12%,#fff9,transparent),radial-gradient(2px 2px at 65% 70%,#fff7,transparent),radial-gradient(1.5px 1.5px at 25% 82%,#fff8,transparent),radial-gradient(1.5px 1.5px at 90% 48%,#fff7,transparent);opacity:var(--glow)}
+.wrap{position:relative;width:100%;max-width:440px;text-align:center}
+.eyebrow{display:inline-block;font-size:.72rem;letter-spacing:.18em;color:var(--sub);padding:5px 12px;border:1px solid var(--line);border-radius:99px;background:var(--chip)}
+h1{font-size:1.7rem;margin:14px 0 6px;font-weight:800;letter-spacing:-.02em}
+.sub{color:var(--sub);font-size:.92rem;margin-bottom:22px}
+.card{--c1:#7c5cff;--c2:#4f8bff;position:relative;background:var(--card);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:28px;padding:30px 22px 26px;min-height:380px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 20px 50px -20px var(--c1),0 2px 0 var(--line) inset;transition:box-shadow .5s}
+.card::before{content:"";position:absolute;inset:0;border-radius:28px;padding:1.5px;background:linear-gradient(140deg,var(--c1),transparent 45%,var(--c2));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.orb{width:150px;height:150px;margin-bottom:12px;filter:drop-shadow(0 10px 22px var(--c1))}
+.orb.spin{animation:wob .5s ease-in-out infinite}
+@keyframes wob{0%,100%{transform:rotate(-7deg) scale(1)}50%{transform:rotate(7deg) scale(1.06)}}
+.badge{font-size:.78rem;font-weight:700;color:#fff;padding:4px 12px;border-radius:99px;background:linear-gradient(90deg,var(--c1),var(--c2))}
+.grade{font-size:2.5rem;font-weight:900;letter-spacing:-.03em;margin:12px 0 10px;background:linear-gradient(90deg,var(--c1),var(--c2));-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1.15}
+.grade.rainbow{background-image:linear-gradient(90deg,#ff5f6d,#ffc371,#7ee08a,#4fc3ff,#b07cff,#ff5f6d);background-size:200% 100%;animation:rb 3s linear infinite}
+@keyframes rb{to{background-position:200% 0}}
+.msg{font-size:1.04rem;line-height:1.65;max-width:34ch;word-break:keep-all}
+.chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:18px}
+.chip{font-size:.8rem;padding:6px 12px;border-radius:99px;background:var(--chip);color:var(--sub)}
+.pop{animation:pop .55s cubic-bezier(.2,1.4,.4,1)}
+@keyframes pop{from{opacity:0;transform:translateY(14px) scale(.92)}to{opacity:1;transform:none}}
+.bad{animation:jit .4s}
+@keyframes jit{20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}
+#draw{margin-top:20px;width:100%;padding:17px;font:inherit;font-size:1.12rem;font-weight:800;color:#fff;border:0;border-radius:18px;cursor:pointer;background:linear-gradient(90deg,var(--btn1),var(--btn2));box-shadow:0 12px 26px -10px var(--btn1);transition:transform .15s,opacity .2s}
+#draw:active{transform:scale(.97)}
+#draw:disabled{opacity:.55;cursor:default}
+.cnt{margin-top:12px;font-size:.8rem;color:var(--sub);min-height:1em}
+.bform{background:var(--card);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:22px;padding:16px;margin-bottom:16px;text-align:left}
+.bform h2{font-size:.9rem;margin:0 0 10px;color:var(--sub);font-weight:700}
+.seg{display:flex;background:var(--chip);border-radius:12px;padding:3px;margin-bottom:10px}
+.seg label{flex:1;cursor:pointer}
+.seg input{display:none}
+.seg span{display:block;text-align:center;padding:8px;border-radius:10px;font-size:.9rem;font-weight:700;color:var(--sub);transition:.2s}
+.seg input:checked+span{background:linear-gradient(90deg,var(--btn1),var(--btn2));color:#fff}
+.row{display:flex;gap:8px}
+.row input{flex:1;min-width:0;padding:12px 6px;border-radius:12px;border:1px solid var(--line);background:var(--chip);color:var(--text);font:inherit;text-align:center}
+.row input:first-child{flex:1.4}
+.leap{display:none;margin-top:8px;font-size:.85rem;color:var(--sub);cursor:pointer}
+.err{color:#e5484d;font-size:.8rem;margin-top:6px;min-height:1em}
+.pass{width:100%;margin-top:18px;padding-top:16px;border-top:1px dashed var(--line)}
+.pass .lb{font-size:.82rem;color:var(--sub);font-weight:600}
+.pass .pc{font-size:2.4rem;font-weight:900;line-height:1.2;background:linear-gradient(90deg,var(--c1),var(--c2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.bar{height:10px;border-radius:99px;background:var(--chip);overflow:hidden;margin-top:6px}
+.bar i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--c1),var(--c2));transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
+.pass small{display:block;margin-top:8px;color:var(--sub);font-size:.72rem}
+.chk{display:block;margin-top:8px;font-size:.85rem;color:var(--sub);cursor:pointer}
+.sbtn{width:100%;margin-top:10px;padding:12px;border-radius:12px;border:1px solid var(--line);background:var(--chip);color:var(--text);font:inherit;font-weight:700;cursor:pointer}
+.sbtn:active{transform:scale(.98)}
+.saju{display:none;background:var(--card);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:22px;padding:18px 12px;margin-bottom:16px}
+.saju h3{margin:0 0 12px;font-size:1rem}
+.pil{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.pl{background:var(--chip);border-radius:14px;padding:8px 4px}
+.pl .t{font-size:.72rem;color:var(--sub);margin-bottom:4px}
+.ch{border-radius:10px;padding:6px 0;margin:4px 0;color:#fff;font-weight:800}
+.ch b{display:block;font-size:1.6rem;line-height:1.2}
+.ch small{font-size:.7rem;opacity:.95;font-weight:600}
+.el-목{background:#3fa66b}.el-화{background:#e5534b}.el-토{background:#d9a21b}.el-금{background:#8d96a8}.el-수{background:#3d7be0}
+.eb{display:flex;gap:6px;margin-top:14px;justify-content:center;flex-wrap:wrap}
+.eb span{font-size:.8rem;padding:5px 10px;border-radius:99px;color:#fff;font-weight:700}
+.sinfo{margin-top:12px;font-size:.85rem;line-height:1.6;color:var(--text)}
+.snote{margin-top:8px;font-size:.72rem;color:var(--sub);line-height:1.5}
+.ai{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:16px}
+.ai a{display:block;text-align:center;text-decoration:none;padding:13px 6px;border-radius:12px;font-weight:800;color:#fff;font-size:.92rem}
+.ai .c{background:linear-gradient(90deg,#d97757,#c15f3c)}
+.ai .g{background:linear-gradient(90deg,#10a37f,#0d8a6b)}
+.ai .sbtn{grid-column:1/-1;margin-top:0}
+.ai-h{margin-top:18px;font-size:.88rem;font-weight:700}
+.wm{margin:30px 0 6px;font-size:.78rem;color:var(--sub);opacity:.85;letter-spacing:.04em}
+.wm b{color:var(--text)}
+.sp{position:fixed;pointer-events:none;font-size:1.3rem;z-index:5;animation:fly 1.6s ease-out forwards}
+@keyframes fly{from{opacity:1;transform:translate(0,0) scale(.6)}to{opacity:0;transform:translate(var(--dx),var(--dy)) scale(1.3) rotate(160deg)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <span class="eyebrow">TODAY'S EXAM LUCK</span>
+  <h1>시험 전 오늘의 운세</h1>
+  <div class="sub">시험 보기 전, 딱 한 번 뽑아보세요</div>
+
+  <div class="bform">
+    <h2>🎂 생년월일 입력 (합격률 확인용)</h2>
+    <div class="seg"><label><input type="radio" name="cal" value="solar" checked><span>양력</span></label><label><input type="radio" name="cal" value="lunar"><span>음력</span></label></div>
+    <div class="row"><input id="by" type="number" inputmode="numeric" placeholder="년 (1999)"><input id="bm" type="number" inputmode="numeric" placeholder="월"><input id="bd" type="number" inputmode="numeric" placeholder="일"></div>
+    <label class="leap" id="leapw"><input type="checkbox" id="leap"> 윤달</label>
+    <div class="row" style="margin-top:10px"><input id="bt" type="time" aria-label="태어난 시간"></div>
+    <label class="chk"><input type="checkbox" id="tu"> 태어난 시간을 몰라요</label>
+    <button id="sajuBtn" type="button" class="sbtn">🧭 사주팔자 계산</button>
+    <div class="err" id="err"></div>
+  </div>
+
+  <div class="saju" id="saju"></div>
+
+  <div class="card" id="card">
+    <svg class="orb" id="orb" viewBox="0 0 160 160" aria-hidden="true">
+      <defs>
+        <radialGradient id="g1" cx="38%" cy="30%" r="75%"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset=".25" stop-color="var(--c2)" stop-opacity=".9"/><stop offset=".75" stop-color="var(--c1)"/><stop offset="1" stop-color="#1b1440"/></radialGradient>
+        <linearGradient id="g2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d9c8ff"/><stop offset="1" stop-color="#6a56b8"/></linearGradient>
+      </defs>
+      <path d="M40 140 Q80 118 120 140 L128 152 H32Z" fill="url(#g2)"/>
+      <circle cx="80" cy="76" r="56" fill="url(#g1)"/>
+      <ellipse cx="60" cy="48" rx="16" ry="9" fill="#fff" opacity=".55" transform="rotate(-30 60 48)"/>
+      <path d="M80 54l4.5 11.5L96 70l-11.5 4.5L80 86l-4.5-11.5L64 70l11.5-4.5z" fill="#fff" opacity=".9"/>
+      <circle cx="104" cy="96" r="3" fill="#fff" opacity=".8"/><circle cx="56" cy="98" r="2" fill="#fff" opacity=".7"/>
+    </svg>
+    <div id="badge" class="badge" style="display:none"></div>
+    <div class="grade" id="grade">운세를 뽑아보세요</div>
+    <div class="msg" id="msg">수정구슬을 향해 마음속으로 시험 합격을 외치고 아래 버튼을 눌러보세요.</div>
+    <div class="chips" id="chips"></div>
+    <div class="pass" id="pass" style="display:none"></div>
+  </div>
+
+  <button id="draw">🔮 운세 뽑기</button>
+  <div class="cnt" id="cnt"></div>
+  <div class="wm">Made by <b>kdu</b> · © 2026 kdu. All rights reserved.</div>
+</div>
+<script>
+const F=[
+["울트라 대길",1,"시험지를 보는 순간 정답이 보인다. 뭘 찍어도 다 맞을 것 같다. 오늘은 당신이 출제자다."],
+["초대길",2,"모르는 문제도 손이 알아서 정답을 고른다. 합격 기운이 온몸을 감싼다."],
+["대대길",4,"공부한 데서 쏙쏙 나온다. 찍은 것도 반은 맞는다. 컨디션 최고!"],
+["대길",7,"어젯밤 본 내용이 그대로 나온다. 실력 이상의 점수가 기대된다."],
+["중대길",9,"막힘없이 술술 풀린다. 헷갈리던 문제도 감이 좋다."],
+["중길",12,"평소 실력이 제대로 나온다. 침착하게 풀면 좋은 결과가 있다."],
+["소길",12,"살짝 운이 따른다. 애매한 문제에서 처음 고른 답이 맞을 확률이 높다."],
+["반길",12,"무난하게 잘 풀린다. 아는 문제만 실수 없이 풀어도 충분하다."],
+["말길",9,"시작은 살짝 불안해도 뒤로 갈수록 풀린다. 끝까지 포기하지 말자."],
+["평",8,"운은 없지만 실력은 있다. 딱 공부한 만큼 나온다."],
+["소평",6,"운이 반반이다. 헷갈리는 문제는 일단 넘기고 나중에 돌아오자."],
+["반흉",5,"한두 문제는 낯설게 나올 수 있다. 당황하지 말고 아는 것부터 풀자."],
+["소흉",4,"마킹 실수 주의! 밀려 쓰지 않았는지 꼭 확인하자."],
+["중흉",3,"'정답 아닌 것' 고르는 문제에서 낚일 수 있다. 문제를 끝까지 읽자."],
+["흉",2.5,"아는 문제도 헷갈린다. 지우개 가루 조심, 시간 배분을 잘 하자."],
+["대흉",1.5,"찍은 건 전부 오답일 것 같다. 이럴 땐 아는 것만 믿자."],
+["대대흉",0.8,"펜은 떨어지고 시계는 빨리 간다. 그래도 실력은 배신하지 않는다."],
+["초대흉",0.6,"오늘은 찍는 족족 틀린다. 반대로 찍으면 맞을지도?"],
+["슈퍼 대흉",0.5,"시험지를 받자마자 머리가 하얘진다. 심호흡 세 번 하고 시작하자."],
+["울트라 대흉",0.1,"찍으면 100% 틀린다. 절대 찍지 말고 아는 것만 풀어라. 이 확률을 뚫은 당신은 전설이다."]
+];
+const ITEMS=["평소 쓰던 펜","따뜻한 물 한 모금","든든한 아침밥","시계 확인 습관","깨끗한 지우개","심호흡 세 번"];
+const total=F.reduce((a,f)=>a+f[1],0);
+function pick(){let r=Math.random()*total;for(let i=0;i<F.length;i++){r-=F[i][1];if(r<0)return i}return 0}
+function pal(i){let h=i<=8?45+i*12:i<=10?220:270-(i-11)*30;let s=i<=10&&i>8?35:80;return[`hsl(${h},${s}%,58%)`,`hsl(${h+28},${s}%,50%)`]}
+function tier(i){return i<=8?"吉 길":i<=10?"平 평":"凶 흉"}
+const $=id=>document.getElementById(id),card=$("card"),btn=$("draw"),orb=$("orb");
+let n=0;
+function setPal(i){const[c1,c2]=pal(i);card.style.setProperty("--c1",c1);card.style.setProperty("--c2",c2)}
+btn.onclick=()=>{
+  btn.disabled=true;orb.classList.add("spin");
+  $("badge").style.display="none";$("chips").innerHTML="";$("pass").style.display="none";
+  $("grade").className="grade";$("grade").textContent="···";$("msg").textContent="운세를 읽는 중이에요";
+  let k=0;
+  const iv=setInterval(()=>{setPal(Math.floor(Math.random()*F.length));if(++k>12){clearInterval(iv);show(pick())}},110);
+};
+function show(i){
+  const f=F[i];n++;
+  orb.classList.remove("spin");setPal(i);
+  const b=$("badge");b.style.display="inline-block";b.textContent=`${tier(i)} · 확률 ${f[1]}%`;
+  const g=$("grade");g.textContent=f[0];g.className="grade pop"+(i===0?" rainbow":"");
+  $("msg").textContent=f[2];$("msg").classList.remove("pop");void $("msg").offsetWidth;$("msg").classList.add("pop");
+  $("chips").innerHTML=`<span class="chip">🍀 행운 아이템 · ${ITEMS[Math.floor(Math.random()*ITEMS.length)]}</span>`;
+  $("cnt").textContent=`지금까지 ${n}번 뽑았어요`;renderPass(i);
+  card.classList.remove("bad");if(i>=15){void card.offsetWidth;card.classList.add("bad")}
+  if(i<=3)spark(i===0?36:16);
+  btn.disabled=false;btn.textContent="🔁 다시 뽑기";
+}
+function spark(c){
+  const r=card.getBoundingClientRect(),E=["✨","⭐","🌟","💫"];
+  for(let k=0;k<c;k++){const s=document.createElement("span");s.className="sp";s.textContent=E[k%4];
+    s.style.left=(r.left+r.width/2)+"px";s.style.top=(r.top+r.height/3)+"px";
+    s.style.setProperty("--dx",(Math.random()*360-180)+"px");s.style.setProperty("--dy",(Math.random()*300-200)+"px");
+    s.style.animationDelay=(Math.random()*.25)+"s";document.body.appendChild(s);setTimeout(()=>s.remove(),2000)}
+}
+const LS="examFortuneBirth";
+let last=-1;
+const BONUS=[50,40,32,26,20,15,10,6,3,0,-3,-7,-11,-16,-21,-27,-33,-38,-44,-55];
+function hash(s){let h=2166136261;for(let k=0;k<s.length;k++){h^=s.charCodeAt(k);h=Math.imul(h,16777619)}return h>>>0}
+function todayStr(){const d=new Date();return d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate()}
+function lunarToSolar(y,m,d,leap){
+  const f=new Intl.DateTimeFormat("en-u-ca-chinese",{timeZone:"UTC",year:"numeric",month:"numeric",day:"numeric"});
+  let t=Date.UTC(y,0,1,12);
+  for(let k=0;k<440;k++,t+=864e5){
+    const p={};f.formatToParts(new Date(t)).forEach(x=>p[x.type]=x.value);
+    const ly=+(p.relatedYear||p.year);
+    if(ly===y&&parseInt(p.month)===m&&+p.day===d&&/bis|閏|leap/i.test(p.month)===leap)return new Date(t);
+  }
+  return null;
+}
+function getBirth(){
+  const y=+$("by").value,m=+$("bm").value,d=+$("bd").value;
+  if(!$("by").value&&!$("bm").value&&!$("bd").value)return null;
+  const cal=document.querySelector('input[name=cal]:checked').value,leap=$("leap").checked;
+  if(!(y>=1900&&y<=new Date().getFullYear()&&m>=1&&m<=12&&d>=1&&d<=31))return{error:"년·월·일을 올바르게 입력해 주세요"};
+  let Y=y,M=m,D=d;
+  if(cal==="lunar"){
+    let dt;
+    try{dt=lunarToSolar(y,m,d,leap)}catch(e){return{error:"이 브라우저는 음력 변환을 지원하지 않아요"}}
+    if(!dt)return{error:"존재하지 않는 음력 날짜예요 (윤달 체크를 확인해 보세요)"};
+    Y=dt.getUTCFullYear();M=dt.getUTCMonth()+1;D=dt.getUTCDate();
+  }else{
+    const t=new Date(y,m-1,d);
+    if(t.getMonth()!==m-1)return{error:"존재하지 않는 양력 날짜예요"};
+  }
+  const note=cal==="lunar"?`음력 ${y}.${m}.${d}${leap?"(윤)":""} → 양력 ${Y}.${M}.${D} 기준`:`양력 ${Y}.${M}.${D} 기준`;
+  try{localStorage.setItem(LS,JSON.stringify({cal,y,m,d,leap}))}catch(e){}
+  return{seed:`${Y}-${M}-${D}`,note,Y,M,D};
+}
+function renderPass(i){
+  last=i;
+  const box=$("pass"),b=getBirth();
+  $("err").textContent=b&&b.error?b.error:"";
+  box.style.display="block";
+  if(!b||b.error){box.innerHTML='<small style="margin:0">위에 생년월일을 입력하고 다시 뽑으면 오늘의 시험 합격률도 볼 수 있어요</small>';return}
+  const h=hash(b.seed+"|"+todayStr());
+  let r=35+h%31+BONUS[i];
+  r=i===0?97+h%3:i===19?1+h%3:Math.max(1,Math.min(99,r));
+  box.innerHTML=`<div class="lb">오늘의 시험 합격률</div><div class="pc">${r}%</div><div class="bar"><i id="fill"></i></div><small>${b.note}</small><small>재미로 보는 수치예요. 실제 합격은 공부가 결정해요 📚</small>`;
+  setTimeout(()=>{const f=$("fill");if(f)f.style.width=r+"%"},60);
+}
+document.querySelectorAll('input[name=cal]').forEach(r=>r.addEventListener("change",()=>{$("leapw").style.display=r.value==="lunar"&&r.checked?"block":"none";if(last>=0)renderPass(last)}));
+["by","bm","bd","leap"].forEach(id=>$(id).addEventListener("change",()=>{if(last>=0)renderPass(last)}));
+try{
+  const s=JSON.parse(localStorage.getItem(LS)||"null");
+  if(s){$("by").value=s.y;$("bm").value=s.m;$("bd").value=s.d;$("leap").checked=!!s.leap;
+    document.querySelector(`input[name=cal][value=${s.cal}]`).checked=true;
+    if(s.cal==="lunar")$("leapw").style.display="block"}
+}catch(e){}
+const GAN=Array.from('갑을병정무기경신임계'),GANH=Array.from('甲乙丙丁戊己庚辛壬癸'),JI=Array.from('자축인묘진사오미신유술해'),JIH=Array.from('子丑寅卯辰巳午未申酉戌亥');
+const GE=['목','목','화','화','토','토','금','금','수','수'],JE=['수','토','목','목','토','화','화','토','금','금','토','수'];
+const TTI=['쥐','소','호랑이','토끼','용','뱀','말','양','원숭이','닭','개','돼지'],ANI=['🐭','🐮','🐯','🐰','🐲','🐍','🐴','🐑','🐵','🐔','🐶','🐷'];
+function sunLon(jd){const n=jd-2451545,g=(357.528+0.9856003*n)*Math.PI/180;const l=280.460+0.9856474*n+1.915*Math.sin(g)+0.020*Math.sin(2*g);return((l%360)+360)%360}
+function calcSaju(Y,M,D,h,mi,known){
+  const hh=known?h:12,mm=known?mi:0;
+  const jd=(Date.UTC(Y,M-1,D,hh,mm)-9*3600e3)/864e5+2440587.5;
+  const lon=sunLon(jd);
+  const sy=(M<=2&&lon<315)?Y-1:Y;
+  const yS=((sy-4)%10+10)%10,yB=((sy-4)%12+12)%12;
+  const mx=Math.floor(((lon-315+360)%360)/30);
+  const mB=(2+mx)%12,mS=((yS%5)*2+2+mx)%10;
+  const dd=Math.round((Date.UTC(Y,M-1,D)-Date.UTC(1900,0,1))/864e5);
+  const dS=((dd%10)+10)%10,dB=(((10+dd)%12)+12)%12;
+  let hr=null;
+  if(known){
+    const t=hh*60+mm,hb=Math.floor(((t+30)%1440)/120),ds=t>=1410?(dS+1)%10:dS;
+    hr={s:((ds%5)*2+hb)%10,b:hb};
+  }
+  return{year:{s:yS,b:yB},month:{s:mS,b:mB},day:{s:dS,b:dB},hour:hr};
+}
+function cell(label,p){
+  if(!p)return `<div class='pl'><div class='t'>${label}</div><div class='ch' style='background:var(--bg1);color:var(--sub)'><b>?</b><small>모름</small></div><div class='ch' style='background:var(--bg1);color:var(--sub)'><b>?</b><small>모름</small></div></div>`;
+  return `<div class='pl'><div class='t'>${label}</div><div class='ch el-${GE[p.s]}'><b>${GANH[p.s]}</b><small>${GAN[p.s]} · ${GE[p.s]}</small></div><div class='ch el-${JE[p.b]}'><b>${JIH[p.b]}</b><small>${JI[p.b]} · ${JE[p.b]}</small></div></div>`;
+}
+$('sajuBtn').onclick=()=>{
+  const b=getBirth(),box=$('saju');
+  if(!b||b.error){$('err').textContent=b?b.error:'생년월일을 먼저 입력해 주세요';return}
+  $('err').textContent='';
+  const known=!$('tu').checked&&!!$('bt').value;
+  let h=0,mi=0;if(known){[h,mi]=$('bt').value.split(':').map(Number)}
+  const s=calcSaju(b.Y,b.M,b.D,h,mi,known);
+  const ps=[s.hour,s.day,s.month,s.year].filter(Boolean),cnt={목:0,화:0,토:0,금:0,수:0};
+  ps.forEach(p=>{cnt[GE[p.s]]++;cnt[JE[p.b]]++});
+  const lack=Object.keys(cnt).filter(k=>!cnt[k]);
+  const top=Object.keys(cnt).sort((a,c)=>cnt[c]-cnt[a])[0];
+  box.innerHTML=`<h3>🧭 나의 사주팔자</h3><div class='pil'>${cell('시주',s.hour)}${cell('일주',s.day)}${cell('월주',s.month)}${cell('년주',s.year)}</div>`
+    +`<div class='eb'>${Object.keys(cnt).map(k=>`<span class='el-${k}'>${k} ${cnt[k]}</span>`).join('')}</div>`
+    +`<div class='sinfo'>${ANI[s.year.b]} <b>${TTI[s.year.b]}띠</b> · 일간(나): <b>${GAN[s.day.s]}${GE[s.day.s]}(${GANH[s.day.s]})</b><br>가장 많은 오행: <b>${top}</b> · 부족한 오행: <b>${lack.length?lack.join(', '):'없음'}</b></div>`
+    +`<div class='snote'>${b.note}${known?'':' · 시간 미입력(시주 제외, 오행은 6글자 기준)'}<br>입춘·절기는 태양 황경으로 계산했어요(년주는 입춘, 월주는 절기 기준). 23:30 이후 출생은 야자시 방식(일주 유지, 시주는 다음 날 기준)이에요. 절기 전환 시각 근처나 1950년대 표준시·서머타임 시기 출생은 만세력 앱과 한 번 대조해 보세요.</div>`;
+  const pf=p=>p?GAN[p.s]+JI[p.b]+'('+GANH[p.s]+JIH[p.b]+')':'모름';
+  const T=new Date(),tn=calcSaju(T.getFullYear(),T.getMonth()+1,T.getDate(),12,0,true);
+  const prompt=[
+    '너는 친근하고 재치 있는 사주 풀이 선배야. 아래 사주팔자로 오늘의 시험운을 재미있게 풀이해줘.',
+    '',
+    '- 생년월일: '+b.note,
+    '- 사주(시·일·월·년): 시주 '+pf(s.hour)+' / 일주 '+pf(s.day)+' / 월주 '+pf(s.month)+' / 년주 '+pf(s.year),
+    '- 일간(나): '+GAN[s.day.s]+GE[s.day.s]+'('+GANH[s.day.s]+'), '+TTI[s.year.b]+'띠',
+    '- 오행 분포: '+Object.keys(cnt).map(k=>k+' '+cnt[k]).join(', ')+' (부족: '+(lack.length?lack.join(', '):'없음')+')',
+    '- 오늘 날짜: '+T.getFullYear()+'-'+(T.getMonth()+1)+'-'+T.getDate()+', 오늘 일진: '+pf(tn.day)+', 월건: '+pf(tn.month),
+    last>=0?'- 오늘 뽑은 시험 운세 등급: '+F[last][0]:'',
+    '',
+    '아래 순서로 답해줘.',
+    '1) 타고난 성향과 공부·시험 스타일 (3줄)',
+    '2) 오늘 일진과 내 사주의 관계로 본 오늘의 시험운',
+    '3) 시험 잘 보는 팁 3가지 (행운의 색, 시간, 마음가짐 등)',
+    '4) 마지막에 응원 한 줄',
+    '재미로 보는 사주라서 가볍고 긍정적인 톤으로, 과한 단정은 하지 마.'
+  ].filter((x,i)=>x!==''||i>0).join('\n');
+  box.insertAdjacentHTML('beforeend',`<div class='ai-h'>🤖 AI에게 해석 부탁하기</div><div class='ai'><a class='c' target='_blank' rel='noopener' href='https://claude.ai/new?q=${encodeURIComponent(prompt)}'>Claude로 풀이</a><a class='g' target='_blank' rel='noopener' href='https://chatgpt.com/?q=${encodeURIComponent(prompt)}'>ChatGPT로 풀이</a><button type='button' class='sbtn' id='cpy'>📋 질문 복사하기</button></div><div class='snote'>내 계정의 Claude·ChatGPT 창이 열려요(로그인 필요, API 토큰 불필요). 버튼을 눌러야만 사주 정보가 해당 서비스로 전송돼요. 질문이 자동 입력되지 않으면 복사 버튼으로 붙여넣어 주세요.</div>`);
+  $('cpy').onclick=async()=>{
+    try{await navigator.clipboard.writeText(prompt);$('cpy').textContent='✅ 복사됐어요! AI 창에 붙여넣기'}
+    catch(e){window.prompt('아래 내용을 복사해서 AI 창에 붙여넣어 주세요',prompt)}
+  };
+  box.style.display='block';
+  box.scrollIntoView({behavior:'smooth',block:'nearest'});
+};
+</script>
+</body>
+</html>
